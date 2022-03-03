@@ -1,4 +1,12 @@
 import styled,{keyframes} from "styled-components"
+const anim = keyframes`
+  from{
+    color:tomato;
+  }
+  to{
+    color:blue;
+  }
+`;
 
 const Wrapper = styled.div`
   width: 100%;
@@ -6,46 +14,43 @@ const Wrapper = styled.div`
   display:flex;
   justify-content: center;
   align-items: center;
-`;
-const rotationAnimation = keyframes`
-  0%{
-    transform:rotate(0deg);
-    border-radius: 0%;
-  }
-  50%{
-    transform: rotate(360deg);
-    border-radius: 50%;
-  }
-  100%{
-    transform:rotate(0deg);
-    border-radius: 0%;
+  button{
+    animation:${anim} 0.5s infinite;
   }
 `;
- const Emoji=styled.span`
-   font-size:36px;
- `;
 
 const Box = styled.div`
-  height: 200px;
-  width: 200px;
-  background-color: tomato;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation:${rotationAnimation} 2s linear infinite;
-  ${Emoji}:hover{
-      font-size:80px;
-    }
+  width:100px;
+  height: 100px;
+  background-color: ${(props)=>props.bgColor};
+  animation:${anim} 1s linear infinite;
+`;
+
+const Circle=styled(Box)`
+  border-radius: 50%;
+`;
+
+const Btn =styled.button`
+  color:tomato;
+  background-color: whitesmoke;
+  border:none;
+  border-radius: 9px;
+`;
+const Input = styled.input.attrs({required:true, maxLenght:10})`
+  background-color:wheat;
 `;
 
 function App() {
   return (
-    <Wrapper>
-      <Box>
-        <Emoji as="span">🔥</Emoji>
-      </Box>
-        <Emoji>😎</Emoji>
-    </Wrapper>
+  <Wrapper>
+    <Box bgColor="teal">🔥</Box>
+    <Circle bgColor="tomato">😎</Circle>
+    <Btn>Log in</Btn>
+    <Btn as="a">Home</Btn>
+    <Input />
+    <Input />
+    <Input />
+  </Wrapper>
   );
 }
 
