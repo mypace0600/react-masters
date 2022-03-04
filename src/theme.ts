@@ -6,8 +6,3 @@ export const lightTheme:DefaultTheme={
     btnColor:"tomato",
 };
 
-export const darkTheme:DefaultTheme={
-    textColor: "white",
-    bgColor: "black",
-    btnColor:"teal",
-};
